@@ -5,7 +5,8 @@ using UnityEngine;
 public class Shooter : MonoBehaviour
 {
     //[SerializeField] private Bullet bulletPrefab;
-    [SerializeField]private BulletPool bulletPool;
+    //[SerializeField]private BulletPool bulletPool;
+    [SerializeField] private UnityBulletPool unityBulletPool;
 
     private Camera mainCam;
 
@@ -25,12 +26,19 @@ public class Shooter : MonoBehaviour
         {
             Vector3 shootingDirection = GetShootingDir();
 
-            Bullet newBullet = bulletPool.GetBullet();
+            Bullet newBullet = unityBulletPool.GetBullet();
 
             newBullet.transform.position = transform.position;
             newBullet.transform.rotation = Quaternion.identity;
 
             newBullet.SetVelocity(shootingDirection);
+
+           /* Bullet newBullet = bulletPool.GetBullet();
+
+            newBullet.transform.position = transform.position;
+            newBullet.transform.rotation = Quaternion.identity;
+
+            newBullet.SetVelocity(shootingDirection);*/
 
         }
     }
